@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{%block title%}Editar Historial{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Editar Historial</h1>
+<form id="registroPacienteForm" action="/edit/historial/{{ historial.idHistorial }}" method="POST">
+    <label for="idPaciente">Paciente :</label>
+    <select id="idPaciente" name="idPaciente" required>
+        <option value="" disabled selected>Seleccione un Paciente </option>
+        {% for paciente in pacientes %}
+            <option value="{{ paciente.idPaciente }}" {% if paciente.idPaciente == historial.idPaciente %} selected {% endif %}> {{ paciente.nombre }} {{paciente.apellido}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="diagnostico">Diagnostico :</label>
+    <input type="text" id="diagnostico" name="diagnostico" value="{{ historial.diagnostico }}" required>
+    
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" value="{{ historial.fecha }}" required>
+
+    <label for="observaciones">Observaciones:</label>
+    <input type="text" id="observaciones" name="observaciones" value="{{ historial.observaciones }}" required>
+
+    <div class="form-buttons">
+        <button type="submit">Editar Historial</button>
+        <a class="btn" href="{{ url_for('router2.list_historial') }}" role="button">Cancelar</a>
+    </div>
+</form>
+    
+    {%endblock%}

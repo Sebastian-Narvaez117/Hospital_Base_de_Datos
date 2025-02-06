@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<link href="{{ url_for('static', filename='CSS/style.css') }}" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hospital System{% endblock %}</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido al Sistema del Hospital</h1>
+    </header>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/register/patient">Registrar Paciente</a></li>
+            <li><a href="/register/cita">Agendar Cita</a></li>
+            <li><a href="/register/medicos">Registrar Médico</a></li>
+            <li><a href="/register/enfermero">Registrar Enfermero</a></li>
+            <li><a href="/register/historial">Registrar Historial</a></li>
+            <li><a href="/register/tratamiento">Registrar Tratamiento</a></li>
+            <li><a href="/register/factura">Registrar Factura</a></li>
+            <li><a href="/register/sala">Registrar Sala</a></li>
+        </ul>
+        <!-- Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+
+
+    </nav>
+
+    <menu id="sidebar">
+        <div class="submenu">
+            <button id="submenuToggle">☰ </button>
+            <ul id="submenu">
+                <li><a href="/list/patient">Lista de Pacientes</a></li>
+                <li><a href="/list/medicos">Lista de Médicos</a></li>
+                <li><a href="/list/enfermero">Lista de Enfermeros</a></li>
+                <li><a href="/list/cita">Lista de Citas</a></li>
+                <li><a href="/list/historial"> Historiales Medicos</a></li>
+                <li><a href="/list/tratamiento">Lista de Tratamientos</a></li>
+                <li><a href="/list/factura">Lista de Facturas</a></li>
+                <li><a href="/list/sala"> Salas Disponibles</a></li>
+            </ul>
+        </div>
+    </menu>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Hospital System</p>
+    </footer>
+    <script src="{{ url_for('static', filename='JavaScript/comport.js') }}"></script>
+
+
+</body>
+
+</html>

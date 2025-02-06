@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+{%block title%}Registro de Historial{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Historial</h1>
+<form id="registroPacienteForm" action="/register/historial" method="POST">
+    <label for="idPaciente">Paciente :</label>
+    <select id="idPaciente" name="idPaciente" required>
+        <option value="" disabled selected>Seleccione un Paciente </option>
+        {% for paciente in pacientes %}
+        <option value="{{ paciente.idPaciente }}"> {{ paciente.nombre }} {{paciente.apellido}}</option>
+        {% endfor %}
+    </select>
+
+
+    <label for="diagnostico">Diagnostico :</label>
+    <input type="text" id="diagnostico" name="diagnostico" required>
+    
+
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+
+    <label for="observaciones">Observaciones:</label>
+    <input type="text" id="observaciones" name="observaciones" required>
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Historial</button>
+        <a class="btn" href="{{ url_for('router2.list_historial') }}" role="button">Cancelar</a>
+    </div>
+</form>
+{%endblock%}

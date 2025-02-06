@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{%block title%}Registro de Tratamiento{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Tratamiento</h1>
+<form id="registroPacienteForm" action="/register/tratamiento" method="POST">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="nombre">Descripcion:</label>
+    <input type="text" id="descripcion" name="descripcion" required>
+
+    <label for="nombre">Duracion:</label>
+    <input type="text" id="duracion" name="duracion" required>
+
+    <label for="nombre">Medicamentos:</label>
+    <input type="text" id="nombre" name="medicamentos" required>
+
+    <label for="idEnfermero">Historial:</label>
+    <select id="idSala" name="idHistorial" required>
+        <option value="" disabled selected>Seleccione al paciente con su historial </option>
+        {% for historial in historiales %}
+        {%for paciente in pacientes %}
+        {% if historial.idPaciente == paciente.idPaciente %}
+        <option value="{{historial.idHistorial}}" >{{paciente.nombre}} {{paciente.apellido }} || {{ historial.diagnostico}}</option>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Tratamiento</button>
+        <a class="btn" href="{{ url_for('router2.list_tratamiento') }}" role="button">Cancelar</a>
+    </div>
+
+
+</form>
+{%endblock%}

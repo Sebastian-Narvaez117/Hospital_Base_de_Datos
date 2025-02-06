@@ -1,0 +1,65 @@
+{%extends "base.html"%}
+{%block title%}Registro de Médico{%endblock%}
+
+{%block content%}
+
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Medicos</h1>
+<form id="registroPacienteForm" action="/register/medicos" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+
+    <label for="especialidad">Especialidad:</label>
+    <select id="especialidad" name="especialidad" required>
+        <option  value="" disabled selected>Seleccione una Especialidad </option>
+        <option  value="Cardiologia">Cardiologia</option>
+        <option  value="Neurologia">Neurologia</option>
+        <option  value="Oncologia">Oncologia</option>
+        <option  value="Pediatra">Pediatra</option>
+        <option  value="Ginecologia">Ginecologia</option>
+        <option  value="Traumatologia">Traumatologia</option>
+        <option  value="Dermatologia">Dermatologia</option>
+        <option  value="Oftalmologia">Oftalmologia</option>
+        <option  value="Otorrinolaringologia">Otorrinolaringologia</option>
+        <option  value="Urologia">Urologia</option>
+        <option  value="Endocrinologia">Endocrinologia</option>
+        <option  value="Reumatologia">Reumatologia</option>
+        <option  value="Psiquiatria">Psiquiatria</option>
+        <option  value="Nutriologia">Nutriologia</option>
+        <option  value="Odontologia">Odontologia</option>
+        <option  value="Medicina General">Medicina General</option>
+        <option  value="Medicina Interna">Medicina Interna</option>
+        <option  value="Medicina Familiar">Medicina Familiar</option>
+        <option  value="Medicina Preventiva">Medicina Preventiva</option>
+        <option  value="Medicina Deportiva">Medicina Deportiva</option>
+        <option  value="Medicina Estetica">Medicina Estetica</option>
+        <option  value="Medicina Forense">Medicina Forense</option>
+        <option  value="Medicina Legal">Medicina Legal</option>
+        <option  value="Medicina Nuclear">Medicina Nuclear</option>
+        <option  value="Medicina Ocupacional">Medicina Ocupacional</option>
+        <option  value="Medicina Paliativa">Medicina Paliativa</option>
+        <option  value="Medicina Regenerativa">Medicina Regenerativa</option>
+        <option  value="Medicina Reproductiva">Medicina
+    </select>
+
+    <label for="direccioncalle">Correo:</label>
+    <input type="text" id="correo" name="correo" required>
+
+    <label for="idCita">Cita :</label>
+    <select id="idCita" name="idCita" required>
+        <option value="" disabled selected>Asigne una </option>
+        {% for cita in citas %}
+            <option value="{{ cita.idCita }}">Fecha: {{ cita.fecha }}  Motivo : {{cita.motivo}}</option>
+        {% endfor %}
+    </select>
+
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Paciente</button>
+        <a class="btn" href="{{ url_for('router2.list_medicos') }}" role="button">Cancelar</a>
+    </div>
+</form>
+
+{%endblock%}

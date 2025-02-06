@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+{%block title%}Editar Medico{%endblock%}
+
+{%block content%}
+
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Editar Medico</h1>
+
+<form id="registroPacienteForm" action="/edit/medicos/{{ medico.idMedico }}" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ medico.nombre }}" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" value="{{ medico.apellido }}" required>
+
+    <label for="especialidad">Especialidad:</label>
+    <select id="especialidad" name="especialidad" required>
+        <option  value="" disabled selected>Seleccione una Especialidad </option>
+        <option  value="Cardiologia" {% if medico.especialidad == "Cardiologia" %} selected {% endif %}>Cardiologia</option>
+        <option  value="Neurologia" {% if medico.especialidad == "Neurologia" %} selected {% endif %}>Neurologia</option>
+        <option  value="Oncologia" {% if medico.especialidad == "Oncologia" %} selected {% endif %}>Oncologia</option>
+        <option  value="Pediatra" {% if medico.especialidad == "Pediatra" %} selected {% endif %}>Pediatra</option>
+        <option  value="Ginecologia" {% if medico.especialidad == "Ginecologia" %} selected {% endif %}>Ginecologia</option>
+        <option  value="Traumatologia" {% if medico.especialidad == "Traumatologia" %} selected {% endif %}>Traumatologia</option>
+        <option  value="Dermatologia" {% if medico.especialidad == "Dermatologia" %} selected {% endif %}>Dermatologia</option>
+        <option  value="Oftalmologia" {% if medico.especialidad == "Oftalmologia" %} selected {% endif %}>Oftalmologia</option>
+        <option  value="Otorrinolaringologia" {% if medico.especialidad == "Otorrinolaringologia" %} selected {% endif %}>Otorrinolaringologia</option>
+        <option  value="Urologia"{% if medico.especialidad == "Urologia" %} selected {% endif %}>Urologia</option>
+        <option  value="Endocrinologia" {% if medico.especialidad == "Endocrinologia" %} selected {% endif %}>Endocrinologia</option>
+        <option  value="Reumatologia" {% if medico.especialidad == "Reumatologia" %} selected {% endif %}>Reumatologia</option>
+        <option  value="Psiquiatria" {% if medico.especialidad == "Psiquiatria" %} selected {% endif %}>Psiquiatria</option>
+        <option  value="Nutriologia" {% if medico.especialidad == "Nutriologia" %} selected {% endif %}>Nutriologia</option>
+        <option  value="Odontologia" {% if medico.especialidad == "Odontologia" %} selected {% endif %}>Odontologia</option>
+        <option  value="Medicina General" {% if medico.especialidad == "Medicina General" %} selected {% endif %}>Medicina General</option>
+        <option  value="Medicina Interna" {% if medico.especialidad == "Medicina Interna" %} selected {% endif %}>Medicina Interna</option>
+        <option  value="Medicina Familiar" {% if medico.especialidad == "Medicina Familiar" %} selected {% endif %}>Medicina Familiar</option>
+    </section>
+
+    <label for="correo">Correo:</label>
+    <input type="text" id="correo" name="correo" value="{{ medico.correo }}" required>
+
+    <label for="idCita">Cita :</label>
+    <select id="idCita" name="idCita" required>
+        <option value="" disabled selected>Asigne una cita </option>
+        {% for cita in citas %}
+            <option value="{{ cita.idCita }}" {% if cita.idCita == medico.idCita %} selected {% endif %}>Fecha: {{ cita.fecha }}  Motivo : {{cita.motivo}}</option>
+        {% endfor %}
+
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Editar Medico</button>
+        <a class="btn" href="{{ url_for('router2.list_medicos') }}" role="button">Cancelar</a>
+    </div>
+</form>
+
+{%endblock%}

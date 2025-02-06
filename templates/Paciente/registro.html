@@ -1,0 +1,33 @@
+
+    {%extends "base.html"%}
+    {% block title %}Registrar Paciente{% endblock %}
+
+    {% block content %}
+    <h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Pacientes</h1>
+    <form id="registroPacienteForm" action="/register/patient" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+
+        <label for="direccionciudad">Dirección Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" required>
+
+        <label for="direccioncalle">Dirección Calle:</label>
+        <input type="text" id="calle" name="calle" required>
+    
+        <label for="direccioncasa">Dirección Casa:</label>
+        <input type="text" id="casa" name="casa" required>
+    
+      
+    
+       
+    
+        <div class="form-buttons">
+            <button type="submit">Registrar Paciente</button>
+            <a class="btn" href="{{ url_for('router.list_patient') }}" role="button">Cancelar</a>
+        </div>
+    </form>
+    
+    {% endblock %}

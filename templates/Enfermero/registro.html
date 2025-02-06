@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Registrar Enfermero{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Enfermeros</h1>
+<form id="registroPacienteForm" action="/register/enfermero" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+
+    <label for="turno">Turno:</label>
+   <select id="turno" name="turno" required>
+        <option value="" disabled selected>Seleccione un turno</option>
+        <option value="Matutino">Matutino</option>
+        <option value="Vespertino">Vespertino</option>
+        <option value="Nocturno">Nocturno</option>
+   </select>
+
+   
+    <label for="idSala">Sala:</label>
+    <select id="idSala" name="idSala" required>
+        <option value="" disabled selected>Seleccione una sala</option>
+        {% for sala in salas %}
+            <option value="{{ sala.idSala }}">{{ sala.tipoSala }}</option>
+        {% endfor %}
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Enfermero</button>
+        <a class="btn" href="{{ url_for('router.list_patient') }}" role="button">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

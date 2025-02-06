@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{% block title %}Editar Enfermero{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Editar Enfermero</h1>
+<form id="registroPacienteForm" action="/edit/enfermero/{{ enfermero.idEnfermero }}" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ enfermero.nombre }}" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" value="{{ enfermero.apellido }}" required>
+
+    <label for="turno">Turno:</label>
+    <input type="text" id="turno" name="turno" value="{{ enfermero.turno }}" required>
+
+    <label for="idSala">Sala:</label>
+    <select id="idSala" name="idSala" required>
+        <option value="" disabled selected>Seleccione una sala</option>
+        {% for sala in salas %}
+            <option value="{{ sala.idSala }}" {% if sala.idSala == enfermero.idSala %} selected {% endif %}>{{ sala.tipoSala }}</option>
+        {% endfor %}
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Editar Enfermero</button>
+        <a class="btn" href="{{ url_for('router.list_enfermero') }}" role="button">Cancelar</a>
+    </div>
+
+</form>
+{% endblock %}

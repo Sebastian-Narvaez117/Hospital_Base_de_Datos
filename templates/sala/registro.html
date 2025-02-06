@@ -1,0 +1,20 @@
+
+{%extends "base.html"%}
+{% block title %}Registrar Sala{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registrar sala</h1>
+<form id="registroPacienteForm" action="/register/sala" method="POST">
+    <label for="nombre">Tipo de Sala:</label>
+    <input type="text" id="tipoSala" name="tipoSala" required>
+
+    <label for="apellido">Capacidad:</label>
+    <input type="number" id="number" name="capacidad" required>
+
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Sala</button>
+        <a class="btn" href="{{ url_for('router.list_sala') }}" role="button">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

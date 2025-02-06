@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{% block title %}Editar Cita{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Editar Cita</h1>
+<form id="registroPacienteForm" action="/edit/cita/{{ cita.idCita }}" method="POST">
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" value="{{ cita.fecha }}" required>
+
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" name="hora" value="{{ cita.hora }}" required>
+
+    <label for="motivo">Motivo:</label>
+    <input type="text" id="motivo" name="motivo" value="{{ cita.motivo }}" required>
+
+    <label for="idPaciente">Paciente:</label>
+    <select id="idPaciente" name="idPaciente" required>
+        <option value="" disabled selected>Seleccione un paciente</option>
+        {% for paciente in pacientes %}
+            <option value="{{ paciente.idPaciente }}" {% if paciente.idPaciente == cita.idPaciente %} selected {% endif %}>{{ paciente.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="idSala">Sala:</label>
+    <select id="idSala" name="idSala" required>
+        <option value="" disabled selected>Seleccione una Sala </option>
+        {% for sala in salas %}
+            <option value="{{ sala.idSala }}" {% if sala.idSala == cita.idSala %} selected {% endif %}>{{ sala.tipoSala }}</option>
+        {% endfor %}
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Editar Cita</button>
+        <a class="btn" href="{{ url_for('router.list_cita') }}" role="button">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

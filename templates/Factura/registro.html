@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{%block title%}Registro de Factura{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Registro de Factura</h1>
+<form id="registroPacienteForm" action="/register/factura" method="POST">
+
+    <label for="nombre">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="nombre">Costo $:</label>
+    <input type="number" id="costo" name="costo" required>
+
+    <label for="idEnfermero">Estado</label>
+    <select id="idSala" name="estado" required>
+        <option value="" disabled selected>Seleccione un estado</option>
+        <option value="Pagada" >Pagada</option>
+        <option value="Pendiente">Pendiente</option>
+    </select>
+
+    <label for="idEnfermero">Cita</label>
+    <select id="idSala" name="idCita" required>
+        <option value="" disabled selected>Seleccione la cita</option>
+        {% for cita in citas %}
+        {%for pacientes in pacientes %}
+        {%if pacientes.idPaciente == cita.idPaciente %}
+        <option value="{{cita.idCita}}">{{cita.idCita}} - {{pacientes.nombre}} {{pacientes.apellido}}</option>
+        {%endif%}
+        {%endfor%}
+        {%endfor%}
+    </select>
+
+    <div class="form-buttons">
+        <button type="submit">Registrar Factura</button>
+        <a class="btn" href="{{ url_for('router2.list_factura') }}" role="button">Cancelar</a>
+    </div>
+
+</form>
+{%endblock%}

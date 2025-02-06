@@ -1,0 +1,544 @@
+.flash-message {
+    position: fixed; /* Fijo en pantalla */
+    top: 20%; /* Centro vertical */
+    left: 50%; /* Centro horizontal */
+    transform: translate(-50%, -50%); /* Ajuste perfecto al centro */
+    z-index: 9999; /* Encima de otros elementos */
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 2.5s; /* Entrada y salida */
+    opacity: 1;
+}
+
+.flash-success {
+    background-color: rgb(18, 216, 11);
+    color: rgb(13, 14, 13);
+    border: 2px solid #c3e6cb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+body {
+    font-family: 'Critter', fantasy;
+    margin: 0;
+    padding: 0;
+    background-color: #1b1a1a;
+    color: #f8f2f2;
+}
+
+header {
+    background-color:rgb(11, 168, 216);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin: 20px 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fcf9f9;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color:rgb(18, 216, 11);
+    color: white;
+}
+
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+form {
+    max-width: 250px; /* Ancho máximo del formulario */
+    margin: 20px auto; /* Centrar el formulario */
+    padding: 20px; /* Agregar espacio interno entre el contenido y el borde */
+    background-color: white;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+/* Etiquetas del formulario */
+form label {
+    display: block;
+    margin-bottom: 8px; /* Espaciado entre la etiqueta y el input */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Campos de entrada */
+form input, form select, form textarea {
+    width: 100%; /* Que ocupen el ancho disponible dentro del formulario */
+    padding: 10px; /* Espaciado interno dentro del input */
+    margin-bottom: 15px; /* Espaciado entre los inputs */
+    border: 1px solid #ccc; /* Bordes del input */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px;
+    box-sizing: border-box; /* Asegura que el padding no expanda el input fuera del formulario */
+}
+
+/* Inputs al enfocar */
+form input:focus, form select:focus, form textarea:focus {
+    border-color: rgb(18, 216, 11);
+    box-shadow: 0 0 5px rgb(18, 216, 11);
+}
+
+/* Contenedor para los botones */
+.form-buttons {
+    display: flex;
+    flex-direction: column; /* Botones alineados verticalmente */
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+/* Estilos para botones */
+form button, 
+.btn {
+    width: 100%; /* Botones ocupan todo el ancho */
+    padding: 8px; /* Espaciado interno */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; /* Tamaño de texto */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form button {
+    background-color: rgb(18, 216, 11);
+    color: white;
+}
+
+form button:hover {
+    background-color: rgb(16, 192, 10);
+    transform: scale(1.05);
+}
+
+.btn {
+    background-color: rgb(247, 12, 12);
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(230, 10, 10);
+    transform: scale(1.05);
+}
+
+
+/* Animación para los campos del formulario */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {    
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color:rgb(18, 216, 11);
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación para los botones de navegación */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+nav ul li a:hover {
+    animation: bounce 0.5s;
+}
+
+/* Animación para los formularios al cargar */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+form {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+
+/* Estilos para la sección de la imagen */
+.hero-image {
+    width: 100%;
+    height: 70vh; /* Ocupa el 70% del alto de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita que la imagen se desborde */
+    background-color: #070707; /* Color de fondo por si la imagen no carga */
+    margin: 20px 0; /* Espacio arriba y abajo */
+}
+
+.hero-image img {
+    width: 50%;
+    height: 70%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    object-position: center; /* Centra la imagen */
+    transition: transform 0.5s ease; /* Animación suave al hacer hover */
+}
+
+.hero-image img:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+
+
+
+#registroPacienteForm {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #141414;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#registroPacienteForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #f5f4f4;
+}
+
+#registroPacienteForm input, #registroPacienteForm select, #registroPacienteForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#registroPacienteForm input:focus, #registroPacienteForm select:focus, #registroPacienteForm textarea:focus {
+    border-color: rgb(18, 216, 11);
+    box-shadow: 0 0 5px rgb(18, 216, 11);
+}
+
+#registroPacienteForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(18, 216, 11);
+    color: rgb(22, 22, 22);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#registroPacienteForm button:hover {
+    background-color:rgb(18, 216, 11);
+    transform: scale(1.05);
+}
+
+/* Animación para los campos del formulario */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#registroPacienteForm input, #registroPacienteForm select, #registroPacienteForm textarea {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+
+/* Estilos generales del menú */
+#sidebar {
+    position: fixed;
+    left: 10px;
+    top: 50px;
+    background: #222;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón del menú */
+#submenuToggle {
+    background: rgb(18, 216, 11);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#submenuToggle:hover {
+    background: #218838;
+}
+
+/* Icono de menú */
+#submenuToggle::after {
+    content: " ▼";
+    font-size: 16px;
+    margin-left: auto;
+}
+
+/* Lista oculta inicialmente */
+#submenu {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: none;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Estilos de los elementos de la lista */
+#submenu li {
+    border-bottom: 1px solid #444;
+}
+
+#submenu li:last-child {
+    border-bottom: none;
+}
+
+#submenu a {
+    display: block;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+#submenu a:hover {
+    background: rgb(18, 216, 11);
+}
+
+/* Animación para abrir */
+#submenu.open {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Efecto de desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenedor para centrar la tabla */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 100%; /* Ajusta el ancho según lo necesites */
+}
+
+/* Estilos generales para la tabla */
+table {
+    width: 70%; /* Reduce el tamaño de la tabla */
+    max-width: 1000px; /* Máximo ancho de la tabla */
+    border-collapse: collapse;
+    font-size: 18px;
+    text-align: left;
+    background-color: rgb(20, 19, 19); /* Rojo oscuro */
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para la cabecera de la tabla */
+thead {
+    background-color: rgb(18, 216, 11); /* Verde */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilos para las celdas */
+th, td {
+    padding: 12px;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+/* Alternar colores en filas para mejor visualización */
+tbody tr:nth-child(even) {
+    background-color: rgb(18, 216, 11); /* Un tono más oscuro de rojo */
+}
+
+
+/* Estilo al pasar el mouse sobre las filas */
+tbody tr:hover {
+    background-color: rgba(238, 238, 233, 0.74);
+    transition: 0.3s ease-in-out;
+}
+
+/* Cambiar el color del texto a negro al pasar el cursor */
+tbody tr:hover td {
+    color: black;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Alinea los botones horizontalmente al centro */
+    align-items: center; /* Alinea los botones verticalmente al centro */
+    gap: 4px; /* Espaciado entre botones */
+}
+
+.edit-button, .delete-button {
+    display: inline-flex;
+    align-items: center; /* Centra el contenido dentro del botón verticalmente */
+    justify-content: center; /* Centra el contenido dentro del botón horizontalmente */
+    background-color: #5aa3f1; /* Color de fondo */
+    color: #111111; /* Color del texto */
+    font-size: 15px; /* Tamaño de texto */
+    padding: 8px 16px; /* Padding ajustado */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Elimina subrayado */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #4a93e1; /* Color en hover */
+}
+
+
+.edit-button:hover {
+    background-color: #0056b3; /* Gris oscuro para hover */
+}
+
+.delete-button {
+    background-color: #ee5261; /* Fondo gris por defecto */
+}
+
+.delete-button:hover {
+    background-color:  #a71d2a; /* Rojo para hover */
+}
+
+.icon {
+    width: 15px; /* Tamaño reducido del ícono */
+    height: 15px;
+    margin-right: 2px;
+    color: #070707; /* Espacio pequeño entre ícono y texto */
+}

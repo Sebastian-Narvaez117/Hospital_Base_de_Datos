@@ -1,0 +1,64 @@
+{%extends "base.html"%}
+
+{%block title%}Lista de Tratamientos{%endblock%}
+
+{%block content%}
+
+<h1 style="text-align: center; color: rgb(18, 216, 11);">Lista de Tratamiento</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Duracion</th>
+                    <th>Medicamentos</th>
+                    <th>Historial de:</th>
+                    <th style="text-align: center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tratamiento in tratamientos %}
+                <tr>
+                    <td>{{ tratamiento.idTratamiento }}</td>
+                    <td>{{ tratamiento.nombre }}</td>
+                    <td>{{ tratamiento.descripcion }}</td>
+                    <td>{{ tratamiento.duracion }}</td>
+                    <td>{{ tratamiento.medicamentos }}</td>
+                    {%for historial in historiales%}
+                    {%if historial.idHistorial == tratamiento.idHistorial%}
+                    {%for paciente in pacientes%}
+                    {%if paciente.idPaciente == historial.idPaciente%}
+                    <td>{{ paciente.nombre }} {{ paciente.apellido }}</td>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    {%endfor%}
+                
+                    <td class="button-container">
+                        <a href="/edit/tratamiento/{{ tratamiento.idTratamiento }}" class="edit-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                            Editar
+                        </a>
+                        <a href="/delete/tratamiento/{{ tratamiento.idTratamiento }}"
+                            onclick="return confirm('¿Está seguro de que desea eliminar este tratamiento?')"
+                            class="delete-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends "base.html"%}
+{%block title%}Editar Factura{%endblock%}
+
+{%block content%}
+<div class="max-w-2xl mx-auto p-4">
+    <h1 style="text-align: center; color: rgb(18, 216, 11);">Editar Factura</h1>
+
+    <form id="registroPacienteForm" action="/edit/factura/{{ factura.idFactura }}" method="POST">
+        <div>
+            <label for="fecha" class="block text-sm font-medium text-gray-200">Fecha</label>
+            <input type="date" name="fecha" id="fecha" value="{{ factura.fecha }}">
+        </div>
+
+        <div>
+            <label for="costo" class="block text-sm font-medium text-gray-200">Costo</label>
+            <input type="number" name="costo" id="costo" value="{{ factura.costo }}">
+        </div>
+
+        <div>
+            <label for="estado" class="block text-sm font-medium text-gray-200">Estado</label>
+            <input type="text" name="estado" id="estado" value="{{ factura.estado }}">
+        </div>
+
+        <div>
+            <label for="idEnfermero">Cita</label>
+            <select id="idSala" name="idCita" required>
+                <option value="" disabled selected>Seleccione la cita</option>
+                {% for cita in citas %}
+                {%for pacientes in pacientes %}
+                {%if pacientes.idPaciente == cita.idPaciente %}
+                <option value="{{cita.idCita}}">{{cita.idCita}} - {{pacientes.nombre}} {{pacientes.apellido}}</option>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+            </select>
+        </div>
+
+        <div div class="form-buttons">
+            <button type="submit">
+                Guardar Cambios
+            </button>
+            <a class="btn" href="{{ url_for('router2.list_factura') }}" role="button">Cancelar</a>
+        </div>
+    </form>
+</div>
+{%endblock%}
